@@ -93,7 +93,7 @@ dotnet add package Azure.Security.KeyVault.Secrets
 Add the starter code for the project
 Run the following command in the cloud shell to begin editing the application.
 
-``` code Program.cs
+ #csharp code Program.cs
 Replace any existing contents with the following code. Be sure to replace YOUR-KEYVAULT-NAME with your actual key vault name.
 
 using Azure.Identity;
