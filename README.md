@@ -93,7 +93,9 @@ dotnet add package Azure.Security.KeyVault.Secrets
 Add the starter code for the project
 Run the following command in the cloud shell to begin editing the application.
 
- #csharp code Program.cs
+ 
+ 
+ ``` #csharp code Program.cs
 Replace any existing contents with the following code. Be sure to replace YOUR-KEYVAULT-NAME with your actual key vault name.
 
 using Azure.Identity;
@@ -155,7 +157,6 @@ while (true)
             break;
     }
 }
-
 async Task CreateSecretAsync(SecretClient client)
 {
     try
@@ -184,7 +185,6 @@ async Task CreateSecretAsync(SecretClient client)
             Console.WriteLine("Secret value cannot be empty.");
             return;
         }
-
         // Create a new KeyVaultSecret object with the provided name and value
         var secret = new KeyVaultSecret(secretName, secretValue);
 
@@ -201,7 +201,6 @@ async Task CreateSecretAsync(SecretClient client)
         Console.WriteLine($"Error creating secret: {ex.Message}");
     }
 }
-
 async Task ListSecretsAsync(SecretClient client)
 {
     try
@@ -252,6 +251,9 @@ async Task ListSecretsAsync(SecretClient client)
     Console.WriteLine("Press Enter to continue...");
     Console.ReadLine();
 }
+
+```
+
 Press Ctrl+S to save the file, then Ctrl+Q to exit the editor.
 
 Sign in to Azure and run the app
