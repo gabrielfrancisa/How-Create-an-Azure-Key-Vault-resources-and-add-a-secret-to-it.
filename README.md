@@ -268,15 +268,17 @@ Sign in to Azure and run the app
 In the cloud shell, enter the following command to sign into Azure.
 
 #BASH
-az login
+>>> az login
+
 You must sign into Azure - even though the cloud shell session is already authenticated.
 
 Note: In most scenarios, just using az login will be sufficient. However, if you have subscriptions in multiple tenants, you may need to specify the tenant by using the --tenant parameter. See Sign into Azure interactively using Azure CLI for details.
 
 Run the following command to start the console app. The app will display the menu system for the application.
 
-TypeCopy
-dotnet run
+#BASH
+>>> dotnet run
+
 You created a secret at the beginning of this exercise. Enter 2 to retrieve and display it.
 
 Enter 1 and enter a secret name and value to create a new secret.
@@ -287,8 +289,8 @@ Enter quit when you are finished with the application.
 
 
 
-
 Clean up resources
+
 Now that you have finished the exercise, you should delete the cloud resources you created to avoid unnecessary resource usage.
 
 In your browser, navigate to the Azure portal https://portal.azure.com, signing in with your Azure credentials if prompted.
@@ -296,8 +298,4 @@ You can just navigate to the resource group you created and view the contents of
 On the toolbar, select Delete resource group.
 Enter the resource group name and confirm that you want to delete it.
 
-CAUTION: Deleting a resource group deletes all resources contained within it. If you chose an existing resource group for this exercise, any existing resources outside the scope of this exercise will also be deleted.
-
 Thank you for following through.
-You have successfully completed this lab. Click End to mark the lab as Complete.
-
