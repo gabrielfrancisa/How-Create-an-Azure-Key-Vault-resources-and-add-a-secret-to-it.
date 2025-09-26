@@ -107,15 +107,12 @@ Run the following command in the cloud shell to begin editing the application.
  
   #csharp code Program.cs
 Replace any existing contents with the following code. Be sure to replace YOUR-KEYVAULT-NAME with your actual key vault name.
-```
+```csharp
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 
 // Replace YOUR-KEYVAULT-NAME with your actual Key Vault name
 string KeyVaultUrl = "https://YOUR-KEYVAULT-NAME.vault.azure.net/";
-
-Add code to complete the application
-Now it's time to add code to complete the application.
 
 // Configure authentication options for connecting to Azure Key Vault
 DefaultAzureCredentialOptions options = new()
@@ -165,6 +162,7 @@ while (true)
             break;
     }
 }
+
 async Task CreateSecretAsync(SecretClient client)
 {
     try
@@ -193,6 +191,7 @@ async Task CreateSecretAsync(SecretClient client)
             Console.WriteLine("Secret value cannot be empty.");
             return;
         }
+        
         // Create a new KeyVaultSecret object with the provided name and value
         var secret = new KeyVaultSecret(secretName, secretValue);
 
@@ -209,6 +208,7 @@ async Task CreateSecretAsync(SecretClient client)
         Console.WriteLine($"Error creating secret: {ex.Message}");
     }
 }
+
 async Task ListSecretsAsync(SecretClient client)
 {
     try
@@ -254,12 +254,12 @@ async Task ListSecretsAsync(SecretClient client)
     {
         // Handle general errors that occur during the listing operation
         Console.WriteLine($"Error listing secrets: {ex.Message}");
-
     }
+    
     Console.WriteLine("Press Enter to continue...");
     Console.ReadLine();
 }
-
+```
 
 
 Press Ctrl+S to save the file, then Ctrl+Q to exit the editor.
@@ -267,7 +267,7 @@ Press Ctrl+S to save the file, then Ctrl+Q to exit the editor.
 Sign in to Azure and run the app
 In the cloud shell, enter the following command to sign into Azure.
 
-TypeCopy
+#BASH
 az login
 You must sign into Azure - even though the cloud shell session is already authenticated.
 
