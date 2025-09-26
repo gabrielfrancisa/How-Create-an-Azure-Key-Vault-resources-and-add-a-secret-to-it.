@@ -16,26 +16,26 @@ Create a resource group for the resources needed for this exercise. If you alrea
 
 In this project, create a resource group (myResourceGrouplod54585245) and you may safely skip this step.
 
->>> COMMAND LINE CODE
+#COMMAND LINE CODE
 az group create --name myResourceGroup --location eastus
 Many of the commands require unique names and use the same parameters.
 >>> Creating some variables will reduce the changes needed to the commands that create resources.
 >>> Run the following commands to create the needed variables.
 >>> Replace myResourceGroup with the name you're using for this lab. If you changed the location in the previous step, make the same change in the location variable.
 
->>> COMMAND LINE CODE 2
+#COMMAND LINE CODE 2
 >>> resourceGroup=myResourceGrouplod54585245
 >> location=eastus
 >> keyVaultName=mykeyvaultname54585245
 
 Run the following command to get the name of the key vault and record the name. You need it later in the exercise.
 
->>> COMMAND LINE CODE 3
+#COMMAND LINE CODE 3
 >> echo $keyVaultName
 
 Run the following command to create an Azure Key Vault resource. This can take a few minutes to run.
 
->>> COMMAND LINE CODE 4
+#COMMAND LINE CODE 4
 >> az keyvault create --name $keyVaultName \
    >> --resource-group $resourceGroup --location $location
 
@@ -44,20 +44,20 @@ To create and retrieve a secret, assign your Microsoft Entra user to the Key Vau
 
 Run the following command to retrieve the userPrincipalName from your account. This represents who the role will be assigned to.
 
->>> COMMAND LINE CODE 5
+#COMMAND LINE CODE 5
 >>> userPrincipal=$(az rest --method GET --url https://graph.microsoft.com/v1.0/me \
     >> --headers 'Content-Type=application/json' \
     >> --query userPrincipalName --output tsv)
 
 Run the following command to retrieve the resource ID of the key vault. The resource ID sets the scope for the role assignment to a specific key vault.
 
->>> COMMAND LINE CODE 6
+#COMMAND LINE CODE 6
 >>> resourceID=$(az keyvault show --resource-group $resourceGroup \
     >>--name $keyVaultName --query id --output tsv)
 
 Run the following command to create and assign the Key Vault Secrets Officer role.
 
->>> COMMAND LINE CODE 7
+#COMMAND LINE CODE 7
 >>>az role assignment create --assignee $userPrincipal \
    >> --role "Key Vault Secrets Officer" \
     >>--scope $resourceID
@@ -67,13 +67,13 @@ Next, add a secret to the key vault you created.
 Add and retrieve a secret with Azure CLI
 Run the following command to create a secret.
 
->>> COMMAND LINE CODE 8
+#COMMAND LINE CODE 8
 >>> az keyvault secret set --vault-name $keyVaultName \
    >> --name "MySecret" --value "My secret value"
 
 Run the following command to retrieve the secret to verify it was set.
 
->>> COMMAND LINE CODE 9
+#COMMAND LINE CODE 9
 >> az keyvault secret show --name "MySecret" --vault-name $keyVaultName
 
 This command returns some JSON. The last line contains the password in plain text.
@@ -87,7 +87,7 @@ Now that the needed resources are deployed to Azure, the next step is to set up 
 >>> The following steps are performed in the cloud shell.
 Run the following commands to create a directory to contain the project and change into the project directory.
 
->>> COMMAND LINE CODE 10
+#COMMAND LINE CODE 10
 >> mkdir keyvault
 >> cd keyvault
 
@@ -96,7 +96,7 @@ Create the .NET console application.
 >>> dotnet new console
 Run the following commands to add the Azure.Identity and Azure.Security.KeyVault.Secret packages to the project.
 
->>> COMMAND LINE CODE 11
+#COMMAND LINE CODE 11
 >> dotnet add package Azure.Identity
 >> dotnet add package Azure.Security.KeyVault.Secrets
 
@@ -260,7 +260,6 @@ async Task ListSecretsAsync(SecretClient client)
     Console.ReadLine();
 }
 
-```
 
 
 Press Ctrl+S to save the file, then Ctrl+Q to exit the editor.
